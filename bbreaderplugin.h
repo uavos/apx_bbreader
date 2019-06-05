@@ -12,6 +12,9 @@ public:
     BbReaderPlugin();
     QObject *createControl();
     int flags();
+    QString title();
 };
+
+
 
 #endif // BBREADERPLUGIN_H

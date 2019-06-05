@@ -13,12 +13,16 @@ target.path = ~/Документы/UAVOS/Plugins/
 INSTALLS += target
 
 SOURCES += \
+    EscReader.cpp \
     bbreaderform.cpp \
     bbreaderplugin.cpp
 
 HEADERS += \
+    EscReader.h \
     bbreaderform.h \
-    bbreaderplugin.h
+    bbreaderplugin.h \
+    escaped.h \
+    node.h
 
 INCLUDEPATH += /home/pavel/sources/build-apx-release/packages/sdk/include
 LIBS += -L/home/pavel/sources/build-apx-release/packages/sdk/lib \

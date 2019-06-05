@@ -15,3 +15,8 @@ int BbReaderPlugin::flags()
 {
     return WidgetPlugin;
 }
+
+QString BbReaderPlugin::title()
+{
+    return "Blackbox reader";
+}

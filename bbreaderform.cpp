@@ -5,9 +5,10 @@
 #include <future>
 #include <Vehicles/Vehicles.h>
 #include <QDebug>
-#include <Datalink/EscReader.h>
+#include "EscReader.h"
 #include <Telemetry/Telemetry.h>
 #include <Telemetry/TelemetryRecorder.h>
+#include <QMessageBox>
 
 BbReaderForm::BbReaderForm(QWidget *parent) :
     QWidget(parent),
@@ -31,7 +32,11 @@ void BbReaderForm::on_pushButtonOpen_clicked()
 void BbReaderForm::on_pushButtonDecode_clicked()
 {
     QFile file(ui->lineEditFilePath->text());
-    file.open(QIODevice::ReadOnly);
+    if(!file.open(QIODevice::ReadOnly))
+    {
+        QMessageBox::critical(this, "Error", "Can't open file: " + file.errorString(), QMessageBox::Ok);
+        return;
+    }
 
     auto vehicle =  Vehicles::instance()->current();
     vehicle->f_telemetry->f_recorder->setValue(true);
