@@ -26,26 +26,23 @@ EscReader::EscReader(QObject *parent)
     : QObject(parent)
     , _escaped()
 {}
-void EscReader::push(const QByteArray &ba)
+void EscReader::push(const QByteArray ba)
 {
     data.append(ba);
-    while (1) {
-        uint cnt = readEscaped();
-        if (!cnt)
-            return;
-        QByteArray ba((const char *) esc_rx, cnt);
-        emit packet_read(ba);
+    while(!data.isEmpty()){
+      uint cnt=readEscaped();
+      if(!cnt)continue;
+      emit packet_read(QByteArray((const char*)esc_rx,cnt));
+      //qDebug("pkt");
     }
 }
 //_escaped override
 uint EscReader::esc_read(uint8_t *buf, uint sz)
 {
-    if (data.isEmpty())
-        return 0;
-    if ((int) sz > data.size())
-        sz = data.size();
-    memcpy(buf, data.data(), sz);
-    data.remove(0, sz);
+    if(data.isEmpty())return 0;
+    if((int)sz>data.size())sz=data.size();
+    memcpy(buf,data.data(),sz);
+    data=data.mid(sz);
     return sz;
 }
 bool EscReader::esc_write_byte(const uint8_t v)

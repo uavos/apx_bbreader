@@ -17,7 +17,10 @@
    <item row="0" column="0">
     <widget class="QLineEdit" name="lineEditFilePath">
      <property name="text">
-      <string>/home/pavel/LOG00065.TXT</string>
+      <string/>
+     </property>
+     <property name="placeholderText">
+      <string>File</string>
      </property>
     </widget>
    </item>

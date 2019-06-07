@@ -30,7 +30,7 @@ class EscReader : public QObject, public _escaped
     Q_OBJECT
 public:
     explicit EscReader(QObject *parent = nullptr);
-    void push(const QByteArray &ba);
+    void push(const QByteArray ba);
     //_escaped override
     uint esc_read(uint8_t *buf, uint sz);
     bool esc_write_byte(const uint8_t v);
