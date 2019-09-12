@@ -1,6 +1,7 @@
 #include "bbreaderform.h"
 #include "ui_bbreaderform.h"
 
+#include <cassert>
 #include <QFileDialog>
 #include <future>
 #include <Vehicles/Vehicles.h>

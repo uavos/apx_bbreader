@@ -24,8 +24,11 @@ HEADERS += \
     escaped.h \
     node.h
 
-INCLUDEPATH += /home/pavel/sources/build-apx-release/packages/sdk/include
-LIBS += -L/home/pavel/sources/build-apx-release/packages/sdk/lib \
+INCLUDEPATH += /home/pavel/apx_sdk/include/ApxGcs
+INCLUDEPATH += /home/pavel/apx_sdk/include/ApxCore
+INCLUDEPATH += /home/pavel/apx_sdk/include/ApxData
+INCLUDEPATH += /home/pavel/apx_sdk/include/ApxShared/
+LIBS += -L/home/pavel/apx_sdk/lib \
     -lApxCore \
     -lApxData \
     -lApxGcs
