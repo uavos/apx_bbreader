@@ -13,7 +13,7 @@ QObject *BbReaderPlugin::createControl()
 
 int BbReaderPlugin::flags()
 {
-    return WidgetPlugin;
+    return Widget;
 }
 
 QString BbReaderPlugin::title()
