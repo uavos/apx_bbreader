@@ -21,6 +21,8 @@ private slots:
 
 private:
     Ui::BbReaderForm *ui;
+    QStringList m_files;
+    void decode(const QString &path);
 };
 
 #endif // BBREADERFORM_H

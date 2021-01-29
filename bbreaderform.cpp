@@ -25,14 +25,25 @@ BbReaderForm::~BbReaderForm()
 
 void BbReaderForm::on_pushButtonOpen_clicked()
 {
-    QString filePath = QFileDialog::getOpenFileName(this, "Open file", QDir::homePath());
-    if(!filePath.isEmpty())
-        ui->lineEditFilePath->setText(filePath);
+    m_files = QFileDialog::getOpenFileNames(this, "Open files", QDir::homePath());
+    ui->lineEditFilePath->setText(QString("%1 files selected").arg(m_files.size()));
 }
 
 void BbReaderForm::on_pushButtonDecode_clicked()
 {
-    QFile file(ui->lineEditFilePath->text());
+    ui->lineEditFilePath->setText(QString("0/%1 files decoded")
+                                  .arg(m_files.size()));
+    for(int i = 0; i < m_files.size(); i++) {
+        decode(m_files[i]);
+        ui->lineEditFilePath->setText(QString("%1/%2 files decoded")
+                                      .arg(i + 1)
+                                      .arg(m_files.size()));
+    }
+}
+
+void BbReaderForm::decode(const QString &path)
+{
+    QFile file(path);
     if(!file.open(QIODevice::ReadOnly))
     {
         QMessageBox::critical(this, "Error", "Can't open file: " + file.errorString(), QMessageBox::Ok);

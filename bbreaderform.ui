@@ -19,8 +19,11 @@
      <property name="text">
       <string/>
      </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
      <property name="placeholderText">
-      <string>File</string>
+      <string>Files...</string>
      </property>
     </widget>
    </item>
